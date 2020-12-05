@@ -3,6 +3,11 @@ public class Verifier {
 	
 	private String isbn;
 	
+	/**
+	 * method that checks to see if an isbn number is valid or not
+	 * @param isbn The isbn number to be checked
+	 * @return true if valid, otherwise return false
+	 */
 	public boolean verify(String isbn) {
 		boolean answer;
 		int sum = 0;
