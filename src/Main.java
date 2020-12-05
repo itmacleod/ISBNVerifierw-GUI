@@ -1,10 +1,15 @@
+import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		String isbn = "9780716703440";
+		Scanner stdin = new Scanner(System.in);
+	
+		System.out.println("Welcome to the ISBN verifier");
+		System.out.println("Please enter an ISBN number to be checked: ");
 		
+		String isbn = stdin.next();
 		Verifier verifier = new Verifier();
 		boolean isValid = verifier.verify(isbn);
 		
