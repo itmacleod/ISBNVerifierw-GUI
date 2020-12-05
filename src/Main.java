@@ -1,9 +1,10 @@
 import java.util.Scanner;
-
+import javax.swing.*;
 public class Main {
 
 	public static void main(String[] args) {
 		
+		/**
 		Scanner stdin = new Scanner(System.in);
 	
 		System.out.println("Welcome to the ISBN verifier");
@@ -18,7 +19,11 @@ public class Main {
 		}else {
 			System.out.println(isbn + " is not a valid isbn number!");
 		}
+		*/
 		
+		JFrame myFrame = new JFrame("ISBN Verifier");
+		myFrame.setSize(400, 400);
+		myFrame.setVisible(true);
 	}
 
 }
