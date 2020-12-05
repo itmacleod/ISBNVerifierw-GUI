@@ -22,7 +22,13 @@ public class Main {
 		*/
 		
 		JFrame myFrame = new JFrame("ISBN Verifier");
-		myFrame.setSize(400, 400);
+		JPanel panel = new JPanel();
+		JButton button = new JButton("click!");
+		panel.add(button);
+		myFrame.add(panel);
+		button.addActionListener(e -> System.out.println("Click!"));
+		
+		myFrame.setSize(600,600);
 		myFrame.setVisible(true);
 	}
 
