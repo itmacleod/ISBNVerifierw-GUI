@@ -1,10 +1,54 @@
 import java.util.Scanner;
 import javax.swing.*;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 public class Main extends JFrame{
 	private JTextField txtVerify;
 	private JLabel lblOutput;
 	private String isbn;
+	
+	public void verify() {
+		String isbn = txtVerify.getText();
+		String answer = " ";
+		int sum = 0;
+		if(isbn.length() == 10) {
+			int position = 10;
+			for(int i = 0; i < 10; i++) {
+				sum = sum + (Integer.parseInt(String.valueOf(isbn.charAt(i))) * position);
+				position--;
+			}
+			
+			if(sum % 11 == 0) {
+				answer = "Valid!";
+			}else {
+				answer = "Invalid!";
+			}
+		}else if(isbn.length() == 13) {
+			int index = 1;
+			for(int i = 0; i < 13; i++) {
+				if(index % 2 == 0) {
+					sum = sum + (Integer.parseInt(String.valueOf(isbn.charAt(i))) * 3);
+				}else {
+					sum = sum + (Integer.parseInt(String.valueOf(isbn.charAt(i))) * 1);
+				}
+				index++;
+				
+			}
+			
+			if(sum % 10 == 0) {
+				answer = "Valid!";
+			}else {
+				answer = "Invalid!";
+			}
+		}else {
+			answer = "Invalid!";
+		}
+		
+		lblOutput.setText(answer);
+		
+	}
+	
 	public Main() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("ISBN Verifier");
@@ -27,6 +71,11 @@ public class Main extends JFrame{
 		txtVerify.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Verify!\n");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				verify();
+			}
+		});
 		btnNewButton.setBounds(162, 155, 117, 29);
 		getContentPane().add(btnNewButton);
 		
@@ -38,31 +87,14 @@ public class Main extends JFrame{
 
 	public static void main(String[] args) {
 		
-		/**
-		Scanner stdin = new Scanner(System.in);
-	
-		System.out.println("Welcome to the ISBN verifier");
-		System.out.println("Please enter an ISBN number to be checked: ");
+		Main verifier = new Main();
 		
-		String isbn = stdin.next();
-		Verifier verifier = new Verifier();
-		boolean isValid = verifier.verify(isbn);
+		verifier.setSize(450,300);
+		verifier.setVisible(true);
 		
-		if(isValid == true) {
-			System.out.println(isbn + " is a valid isbn number!");
-		}else {
-			System.out.println(isbn + " is not a valid isbn number!");
-		}
-		*/
 		
-		JFrame myFrame = new JFrame("Verifier");
-		JPanel myPanel = new JPanel();
-		JButton button = new JButton("Click!");
-		myPanel.add(button);
-		myFrame.getContentPane().add(myPanel);
 		
-		button.addActionListener(e -> System.out.println("Click!"));
-		myFrame.setSize(600,600);
-		myFrame.setVisible(true);
+		
+		
 	}
 }
