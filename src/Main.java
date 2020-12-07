@@ -65,6 +65,11 @@ public class Main extends JFrame{
 		getContentPane().add(lblNewLabel_1);
 		
 		txtVerify = new JTextField();
+		txtVerify.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				verify();
+			}
+		});
 		txtVerify.setHorizontalAlignment(SwingConstants.RIGHT);
 		txtVerify.setBounds(271, 92, 130, 26);
 		getContentPane().add(txtVerify);
