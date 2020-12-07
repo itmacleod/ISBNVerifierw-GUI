@@ -46,6 +46,8 @@ public class Main extends JFrame{
 		}
 		
 		lblOutput.setText(answer);
+		txtVerify.requestFocus();
+		txtVerify.selectAll();
 		
 	}
 	
